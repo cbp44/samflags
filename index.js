@@ -1,18 +1,17 @@
 #!/usr/bin/env node
 
-const version = require('./package.json').version;
 let program = require('commander');
 
+const version = require('./package.json').version;
 const samflagsParse = require('./samflags-parse');
 
-function buildProgram() {
-  program.version(version)
-    .command('parse <flags...>')
-    .alias('*')
-    .description('parse the given SAM flags into human readable strings')
-    .action(samflagsParse);
-
-  program.on('--help', function() {
+// build the program command line options
+program.version(version)
+  .command('parse <flags...>')
+  .alias('p')
+  .description('parse the given SAM flags into human readable strings')
+  .action(samflagsParse)
+  .on('--help', function() {
     console.log('\n');
     console.log('  Example:');
     console.log();
@@ -24,8 +23,18 @@ function buildProgram() {
     console.log('       - Read is PCR or optical duplicate (1024)');
     console.log();
   });
-}
 
-buildProgram();
-
+// parse args
 program.parse(process.argv);
+
+// no command was typed, only 'samflags' so output help
+if (!process.argv.slice(2).length) {
+  console.log();
+  console.log('  error: must choose a command to run!');
+  console.log('   for parsing examples:');
+  console.log('    $ samflags parse --help')
+  console.log();
+  program.outputHelp();
+
+  console.log();
+}
