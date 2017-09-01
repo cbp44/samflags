@@ -26,10 +26,12 @@ module.exports = (flags) => {
     flagMap.forEach((desc, flagValue) => {
       if (checkFlag(flag, flagValue)) {
         // does have this flag so print it out
-        console.log(desc);
+        console.log(` - ${desc} (${flagValue})`);
       }
     });
 
     console.log();
-  })
+  });
+
+  console.log('Finished!')
 }
