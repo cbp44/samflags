@@ -1,0 +1,25 @@
+{
+  "name": "samflags",
+  "version": "1.0.0",
+  "description": "Decode SAM flags to human readable strings from command-line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "samflags": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbp44/samflags.git"
+  },
+  "author": "Chris Preusch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cbp44/samflags/issues"
+  },
+  "homepage": "https://github.com/cbp44/samflags#readme",
+  "dependencies": {
+    "commander": "^2.11.0"
+  }
+}
