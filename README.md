@@ -1,5 +1,14 @@
 # samflags
-Samflags is a command line utility to decode SAM flags (e.g. 1804) into plain English text. It also exposes a library that can decode SAM flags for you if you want to use it in your own application.
+Samflags is a command line utility to decode SAM flags (e.g. 1804) into plain English text.
+
+Basically, it turns 1804 into this:
+- Read unmapped
+- Mate unmapped
+- Not primary alignment
+- Read fails platform/vendor quality checks
+- Read is PCR or optical duplicate
+
+ It also exposes a library that can decode SAM flags for you if you want to use it in your own application.
 
 It was inspired by websites like the following that do the same thing:
 - https://broadinstitute.github.io/picard/explain-flags.html
@@ -13,6 +22,15 @@ This is a standard NodeJS package. It requires you to have NodeJS and npm instal
 If you have npm installed, you can install samflags as a command-line utility by using the following command.
 ```bash
 $ npm install -g samflags
+```
+
+If you want to use it in your own project as a library, do this instead...
+```bash
+$ npm install samflags
+```
+
+```node
+const samflags = require('samflags');
 ```
 
 ## Command-line Usage
@@ -43,6 +61,8 @@ $ samflags parse --help
 ```
 
 ## Library Usage
+
+A simple example library usage.
 
 ```node
 const samflags = require('samflags');
